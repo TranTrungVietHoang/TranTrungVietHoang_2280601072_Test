@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model TranTrungVietHoang_2280601072_Test.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Thông tin sinh viên";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-primary mb-4">
+            <i class="fas fa-id-badge me-2"></i>Chi tiết sinh viên
+        </h2>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                @if (!string.IsNullOrEmpty(Model.Hinh))
+                {
+                    <img src="@Model.Hinh" alt="Ảnh sinh viên" class="img-fluid rounded-circle border" style="max-width: 200px;" />
+                }
+                else
+                {
+                    <i class="fas fa-user-circle fa-10x text-secondary"></i>
+                }
+            </div>
+
+            <div class="col-md-8">
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th style="width: 180px;"><i class="fas fa-id-card me-2"></i>Mã sinh viên:</th>
+                            <td>@Model.MaSV</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-user me-2"></i>Họ tên:</th>
+                            <td>@Model.HoTen</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-venus-mars me-2"></i>Giới tính:</th>
+                            <td>@Model.GioiTinh</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-calendar-alt me-2"></i>Ngày sinh:</th>
+                            <td>@Model.NgaySinh.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-graduation-cap me-2"></i>Ngành học:</th>
+                            <td>@Model.NganhHoc?.TenNganh</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-4 text-end">
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-1"></i> Quay lại danh sách
+            </a>
+        </div>
+    </div>
+</div>
+
